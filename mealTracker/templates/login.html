@@ -1,0 +1,37 @@
+{% extends"homePage.html" %}
+
+{% block title %} Log in {% endblock %}
+
+{% block contents %}
+
+
+    <h3>Log in. Do not have an account? <a href="{{ url_for('register') }}"> Register now! </a></h3>
+
+     <!-- This form sends username and password to the server for the user to log in-->
+
+    {{ form.hidden_tag() }}
+    <form method="POST" action="">
+        {{ form.csrf_token }}
+        <table>
+            <tr>
+                <td>{{ form.username.label }}</td>
+                <td>{{ form.username }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.password.label }}</td>
+                <td>{{ form.password }}</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <button type="submit">Send</button>
+                    <button type="reset">Clear</button>
+                </td>
+            </tr>
+        </table>
+
+    </form>
+
+    <h3> <a href="{{ url_for('forgotpw') }}"> Forgot password? </a> </h3>
+
+{% endblock %}

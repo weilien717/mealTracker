@@ -1,0 +1,23 @@
+{% extends "homePage.html" %}
+
+{% block title %} Contact Us {% endblock %}
+{% block contents %}
+
+
+    <!-- The action is usually an endpoint on the server to handle the submitted data -->
+
+    {{ form.hidden_tag() }}
+    <form method="POST" action="">
+        {{ form.csrf_token }}
+
+        <h3>Please enter your {{ form.email.label }} {{ form.email }} </h3>
+
+        <h3>
+        <button type="submit">Send</button>
+        <button type="reset">Clear</button>
+        </h3>
+
+    </form>
+
+
+{% endblock %}

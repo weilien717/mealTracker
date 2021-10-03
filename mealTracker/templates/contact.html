@@ -1,0 +1,45 @@
+{% extends "homePage.html" %}
+
+{% block title %} Contact Us {% endblock %}
+{% block contents %}
+
+
+
+    <h3>Contact Form</h3>
+
+
+
+     <!-- This form sends the information of the user and message that he wants us to know. we ll then store them in the text file  -->
+
+    {{ form.hidden_tag() }}
+    <form method="POST" action="">
+        {{ form.csrf_token }}
+
+
+        <table>
+            <tr>
+                <td>{{ form.name.label }}</td>
+                <td>{{ form.name }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.email.label }}</td>
+                <td>{{ form.email }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.message.label }}</td>
+                <td>{{ form.message }}</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <button type="submit">Send</button>
+                    <button type="reset">Clear</button>
+                </td>
+            </tr>
+        </table>
+
+
+    </form>
+
+
+{% endblock %}

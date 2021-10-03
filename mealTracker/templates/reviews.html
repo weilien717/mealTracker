@@ -1,0 +1,77 @@
+{% extends "homePage.html" %}
+
+{% block title %} Review {% endblock %}
+
+{% block contents %}
+
+    <!-- This table displays the data of all the reviews from the review.txt file-->
+    {% for review in reviews %}
+        <table border="1">
+            <tr>
+                <td>Rating out of 5</td>
+                <td>Name</td>
+                <td>Customer review</td>
+
+            </tr>
+            <tr>
+                <!-- We will set the rating that corresponds to star images  -->
+                {% if review[0]== 'one' %}
+                    <td><img src="/static/1star.png" alt="oneStar" width='100' height='100'></td>
+                {% elif review[0]== 'two' %}
+                    <td><img src="/static/2star.png" alt="twoStar" width='130' height='100'></td>
+                {% elif review[0]== 'three' %}
+                    <td><img src="/static/3star.png" alt="threeStar" width='145' height='100'></td>
+                {% elif review[0]== 'four' %}
+                    <td><img src="/static/4star.png" alt="fourStar" width='170' height='100'></td>
+                {% elif review[0]== 'five' %}
+                    <td><img src="/static/5star.png" alt="fiveStar" width='200' height='100'></td>
+                {% endif %}
+                <td>{{ review[1] }}</td>
+                <td>{{ review[2] }}</td>
+
+            </tr>
+        </table>
+    {% endfor %}
+
+
+
+    {{ form.hidden_tag() }}
+    <form method="POST" action="">
+        {{ form.csrf_token }}
+         <!-- Only logged in user can write a review -->
+        <div class=metanav>
+            {% if session.logged_in %}
+                <table>
+                    <caption class="reviewCaption"> Would you like to give us a review</caption>
+                    <tr>
+                        <td>{{ form.rate.label }}</td>
+                        <td>{{ form.rate }}</td>
+                    <tr>
+                        <td>{{ form.name.label }}</td>
+                        <td>{{ form.name }}</td>
+                    </tr>
+
+                    <tr>
+                        <td>{{ form.message.label }}</td>
+                        <td>{{ form.message }}</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <button type="submit">Send</button>
+                            <button type="reset">Clear</button>
+                        </td>
+                    </tr>
+                </table>
+            {% endif %}
+        </div>
+
+
+    </form>
+
+
+{% endblock %}
+
+
+
+

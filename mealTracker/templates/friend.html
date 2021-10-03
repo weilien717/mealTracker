@@ -1,0 +1,22 @@
+{% extends"homePage.html" %}
+
+{% block title %} Friend {% endblock %}
+
+{% block contents %}
+
+<h1> {{friend_name}}'s meal gallery </h1>
+<table border="0">
+
+    {% for i in range(leng)%}
+    <tr> <h4>{{ foodNameList[i] }}</h4> </tr>
+    <tr> <img src="{{foodImageList[i]}}" width='350px' height='300px'> </tr>
+    <tr> <h4> uploaded date: {{ datePostedList[i] }}</h4> </tr>
+    <tr> <h4> uploaded time: {{ timePostedList[i] }}</h4> </tr>
+    <hr>
+    {% endfor %}
+
+</table>
+
+
+
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends"homePage.html" %}
+
+{% block title %} Upload Food {% endblock %}
+
+{% block contents %}
+
+
+<!-- This form sends username and password to the server for the user to log in-->
+{{ form.hidden_tag() }}
+<form method="POST" action="" enctype="multipart/form-data">
+    {{ form.csrf_token }}
+    <table>
+        <tr>
+            <td>{{ form.foodImage.label }}</td>
+            <td>{{ form.foodImage }}</td>
+        </tr>
+        <tr>
+            <td>{{ form.message.label }}</td>
+            <td>{{ form.message }}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <button type="submit">Send</button>
+                <button type="reset">Clear</button>
+            </td>
+        </tr>
+    </table>
+
+</form>
+
+
+
+{% endblock %}
